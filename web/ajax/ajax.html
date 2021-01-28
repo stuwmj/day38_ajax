@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <style>
+        #time, #res {
+            width: 300px;
+            height: 30px;
+            border: dashed 1px red;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">ajax方法</button>
+<div id="time"></div>
+<div id="res"></div>
+</body>
+<script>
+    $(function () {
+        var time = new Date()
+        $("#time").html(time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds())
+        $("#btn").click(function () {
+            $.ajax({
+                url:"post.do",//一个用来包含发送请求的URL字符串。@WebServlet("/post.do")
+                data:{name:"lisi", age:"30"},//发送给后端的数据
+                type:"post",//请求方式    默认的是get
+                dataType:"json",//服务器返回的数据类型。
+                success:function (data) {//success是一个回调函数   获取servlet给咱们响应的数据
+                    console.log(data)
+                    $("#res").html(data.res)//直接复制给data
+                }
+            })
+        })
+    })
+</script>
+</html>

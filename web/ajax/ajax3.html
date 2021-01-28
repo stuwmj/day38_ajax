@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<button id="btn">ajax</button>
+<p></p>
+</body>
+<script>
+    $(function () {
+        $("#btn").click(function () {
+            $.ajax({
+                url:"post.do",
+                data:{name:"sm",age:"23"},
+                type:"post",
+                dataType:"json",
+                success:function (data) {
+                    $("p").html(data.res)
+                }
+            })
+        })
+    })
+</script>
+</html>

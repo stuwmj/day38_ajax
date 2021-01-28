@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<button id="btn">get</button>
+<p></p>
+</body>
+<script>
+    $(function () {
+        $("#btn").click(function () {
+            $.post("post.do", {name:"wen",age:"25"},function (data) {
+                $("p").text(data.res)
+            },"json")
+        })
+    })
+</script>
+</html>

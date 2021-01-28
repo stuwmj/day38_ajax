@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<button id="btn">get方法</button>
+<p></p>
+</body>
+<script>
+    $(function () {
+        $("#btn").click(function () {
+            $.get("get.do",function (data) {
+                $("p").html(data.name)
+            },"json")
+        })
+    })
+</script>
+</html>

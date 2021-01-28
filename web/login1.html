@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+账号: <input type="text" name="username" id="username"><br>
+密码: <input type="password" name="password" id="password"><br>
+<input type="button" value="登录" onclick="login()">
+<p id="p1"></p>
+</body>
+<script>
+
+    function login() {
+        var username = document.getElementById("username").valueOf().value
+        var password = document.getElementById("password").valueOf().value
+        var xmlhttp;
+        if (window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest()
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+        }
+        xmlhttp.open("post", "json", true)
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+        xmlhttp.send("username=" + username + "&password=" + password)
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                var tests = xmlhttp.responseText
+                console.log(tests)
+                console.log(typeof tests)
+                document.getElementById("p1").innerHTML = tests
+            }
+        }
+    }
+</script>
+</html>

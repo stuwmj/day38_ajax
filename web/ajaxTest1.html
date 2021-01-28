@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn" onclick="send()">点击</button>
+</body>
+<script>
+    function send() {
+        // 1. 实例化ajax对象
+        var xmlhttp;
+        if (window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject();
+        }
+        // 2. 向服务器发送请求
+        xmlhttp.open("get", "json?username=wen&password=123456",true);
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function () {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                // 3.获取服务器中响应的数据
+                var tests = xmlhttp.responseText
+                console.log(tests)
+            }
+        }
+    }
+</script>
+</html>
